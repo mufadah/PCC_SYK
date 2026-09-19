@@ -49,9 +49,12 @@
         <a href="#contact" class="hover:text-primary transition">Kontak</a>
       </nav>
 
-      <!-- Tombol download resume, versi desktop -->
-      <div class="hidden md:block">
-        <a href="assets/CV_LabibFauzi_Software_Workshop.pdf" download
+      <!-- Tombol download resume dan tema, versi desktop -->
+      <div class="hidden md:flex items-center gap-3">
+        <button id="themeToggle" type="button" class="theme-toggle" aria-label="Aktifkan dark mode" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">&#9790;</span>
+        </button>
+        <a href="assets/CV_Faiq AudahFauzi_Software_Workshop.pdf" download
           class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-medium px-4 py-2 rounded-lg transition">
           Download Resume
         </a>
@@ -75,7 +78,11 @@
       <a href="#skills" class="block py-2">Skills</a>
       <a href="#projects" class="block py-2">Projects</a>
       <a href="#contact" class="block py-2">Kontak</a>
-      <a href="assets/CV_LabibFauzi_Software_Workshop.pdf" download
+      <button id="mobileThemeToggle" type="button" class="theme-toggle mt-2" aria-label="Aktifkan dark mode" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">&#9790;</span>
+        <span>Ganti Tema</span>
+      </button>
+      <a href="assets/CV_Faiq AudahFauzi_Software_Workshop.pdf" download
         class="block py-2 text-primary font-semibold">Download Resume</a>
     </nav>
   </header>
@@ -96,11 +103,11 @@
 
         <!-- Tombol Download cv dan ke project -->
         <div class="flex flex-wrap gap-3">
-          <a href="assets/CV_LabibFauzi_Software_Workshop.pdf" download
+          <a href="assets/CV_Faiq AudahFauzi_Software_Workshop.pdf" download
             class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-medium px-5 py-3 rounded-lg transition">
             Download Resume
           </a>
-          <a href="/project.html"
+          <a href="#project"
             class="inline-flex items-center gap-2 border border-gray-200 hover:border-primary hover:text-primary text-sm font-medium px-5 py-3 rounded-lg transition">
             Lihat Projects
           </a>
@@ -198,11 +205,12 @@
       <div class="max-w-6xl mx-auto px-5 sm:px-8">
         <h2 class="font-heading text-3xl font-bold text-gray-900 mb-10 text-center">Projects</h2>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="carousel" aria-label="Daftar project">
+          <div id="projectTrack" class="carousel-track">
 
           <!-- Card project 1 -->
           <article
-            class="bg-white border border-gray-100 rounded-2xl p-5 transition duration-200 ease-in-out hover:shadow-[0_10px_25px_-10px_rgba(0,0,0,0.15)] hover:-translate-y-0.5">
+            class="project-card bg-white border border-gray-100 rounded-2xl p-5 transition duration-200 ease-in-out hover:shadow-[0_10px_25px_-10px_rgba(0,0,0,0.15)] hover:-translate-y-0.5">
             <div
               class="bg-gray-200 rounded-xl aspect-video mb-4 flex items-center justify-center text-gray-400 text-xs">
               <img src="assets/project.jpeg" alt="Screenshot Nama Project"
@@ -215,7 +223,7 @@
 
           <!-- Card project 2 -->
           <article
-            class="bg-white border border-gray-100 rounded-2xl p-5 transition duration-200 ease-in-out hover:shadow-[0_10px_25px_-10px_rgba(0,0,0,0.15)] hover:-translate-y-0.5">
+            class="project-card bg-white border border-gray-100 rounded-2xl p-5 transition duration-200 ease-in-out hover:shadow-[0_10px_25px_-10px_rgba(0,0,0,0.15)] hover:-translate-y-0.5">
             <div
               class="bg-gray-200 rounded-xl aspect-video mb-4 flex items-center justify-center text-gray-400 text-xs">
               <img src="assets/project.jpeg" alt="Screenshot Nama Project"
@@ -228,7 +236,7 @@
 
           <!-- Card project 3 (placeholder, ganti sesuai project kamu) -->
           <article
-            class="bg-white border border-gray-100 rounded-2xl p-5 transition duration-200 ease-in-out hover:shadow-[0_10px_25px_-10px_rgba(0,0,0,0.15)] hover:-translate-y-0.5">
+            class="project-card bg-white border border-gray-100 rounded-2xl p-5 transition duration-200 ease-in-out hover:shadow-[0_10px_25px_-10px_rgba(0,0,0,0.15)] hover:-translate-y-0.5">
             <div
               class="bg-gray-200 rounded-xl aspect-video mb-4 flex items-center justify-center text-gray-400 text-xs">
               <img src="assets/project.jpeg" alt="Screenshot Nama Project"
@@ -238,6 +246,24 @@
             <p class="text-gray-500 text-sm mb-3">Aplikasi yang terhubung dengan IoT berupa ESP32</p>
           </article>
 
+          <!-- Card project 4 -->
+          <article
+            class="project-card bg-white border border-gray-100 rounded-2xl p-5 transition duration-200 ease-in-out hover:shadow-[0_10px_25px_-10px_rgba(0,0,0,0.15)] hover:-translate-y-0.5">
+            <div
+              class="bg-gray-200 rounded-xl aspect-video mb-4 flex items-center justify-center text-gray-400 text-xs">
+              <img src="assets/presensi.webp" alt="Screenshot Aplikasi Presensi Digital"
+                class="w-full h-full object-cover rounded-xl">
+            </div>
+            <h3 class="font-heading font-semibold text-lg text-gray-900 mb-1">Aplikasi Presensi Digital</h3>
+            <p class="text-gray-500 text-sm mb-3">Sistem presensi digital untuk membantu pencatatan kehadiran secara praktis.</p>
+          </article>
+
+          </div>
+          <div class="carousel-controls">
+            <button id="prevProject" type="button" class="carousel-button" aria-label="Project sebelumnya">&#8592;</button>
+            <div id="carouselStatus" class="carousel-status" aria-live="polite">1 / 4</div>
+            <button id="nextProject" type="button" class="carousel-button" aria-label="Project berikutnya">&#8594;</button>
+          </div>
         </div>
       </div>
     </section>
@@ -253,7 +279,7 @@
 
         <!-- Kolom 1: nama & tagline -->
         <div>
-          <p class="font-heading font-bold text-xl text-white mb-3">Labib<span class="text-blue-500">.</span></p>
+          <p class="font-heading font-bold text-xl text-white mb-3">Faiq Audah<span class="text-blue-500">.</span></p>
           <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
             Terbuka untuk kolaborasi, magang, atau sekadar diskusi seputar teknologi.
           </p>
@@ -284,7 +310,7 @@
 
       </div>
 
-      <p class="text-gray-500 text-xs text-center pt-6">© <span id="year">2006</span> Labib. Dibuat dengan Tailwind CSS.
+      <p class="text-gray-500 text-xs text-center pt-6">© <span id="year"></span> Faiq Audah. Dibuat dengan Tailwind CSS.
       </p>
     </div>
   </footer>
